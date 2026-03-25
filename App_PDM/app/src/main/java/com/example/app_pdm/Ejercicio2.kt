@@ -35,7 +35,7 @@ fun ExerciseTwo(
     modifier: Modifier = Modifier){
 
     Column(
-        modifier = modifier.fillMaxSize(),
+        modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally) {
         Image(

@@ -25,6 +25,9 @@ class MainActivity : ComponentActivity() {
 
                     //Ejercicio 2
                     //Recursos()
+
+                    //Ejercicio 3
+                    RecursosTexto()
                 }
             }
         }
