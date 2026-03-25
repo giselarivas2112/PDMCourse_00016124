@@ -72,6 +72,7 @@ fun ExerciseThree(
                     Text(
                         text = titulo2,
                         fontWeight = FontWeight.Bold,
+                        textAlign = TextAlign.Center,
                         modifier = Modifier.padding(bottom = 16.dp))
                     Text(text = descripcion2, textAlign = TextAlign.Justify)
                 }

@@ -1,19 +1,21 @@
 <resources>
     <string name="app_name">App_PDM</string>
     <!-- Texto ejercicio 1 -->
-    <string name="titulo">Jetpack Compose tutorial</string>
-    <string name="parrafo1">Jetpack Compose is a modern toolkit for building native Android UI. Compose simplifies and accelerates UI development on Android with less code, powerful tools, and intuitive Kotlin APIs.</string>
-    <string name="parrafo2">In this tutorial, you build a simple UI component with declarative functions. You call Compose functions to say what elements you want and the Compose compiler does the rest. Compose is built around Composable functions. These functions let you define your app\'s UI programmatically because they let you describe how it should look and provide data dependencies, rather than focus on the process of the UI\'s construction, such as initializing an element and then attaching it to a parent. To create a Composable function, you add the @Composable annotation to the function name.</string>
+    <string name="titulo">Tutorial de Jetpack Compose</string>
+    <string name="parrafo1">Jetpack Compose es un toolkit moderno para crear interfaces nativas en Android. Compose simplifica y acelera el desarrollo de UI en Android con menos código, herramientas potentes y APIs intuitivas de Kotlin.</string>
+    <string name="parrafo2">En este tutorial, construirás un componente de UI simple con funciones declarativas. Llamas a las funciones de Compose para indicar qué elementos quieres y el compilador de Compose hace el resto. Compose está construido alrededor de funciones Composable. Estas funciones te permiten definir la UI de tu app de manera programática, ya que te dejan describir cómo debe lucir y cuáles son sus dependencias de datos, en lugar de enfocarte en el proceso de construcción de la UI, como inicializar un elemento y luego adjuntarlo a un padre. Para crear una función Composable, agregas la anotación @Composable al nombre de la función.</string>
+
     <!-- Texto ejercicio 2 -->
-    <string name="textoTarea1">All tasks completed</string>
-    <string name="textoTarea2">Nice work!</string>
+    <string name="textoTarea1">Todas las tareas completadas</string>
+    <string name="textoTarea2">¡Buen trabajo!</string>
+
     <!-- Texto ejercicio 3 -->
-    <string name="tituloCuadro1">Text composable</string>
-    <string name="Descripcion1">Displays text and follows the recommended Material Design guidelines.</string>
-    <string name="tituloCuadro2">Image composable</string>
-    <string name="Descripcion2">Creates a composable that lays out and draws a given Painter class object.</string>
-    <string name="tituloCuadro3">Row composable</string>
-    <string name="Descripcion3">A layout composable that places its children in a horizontal sequence.</string>
-    <string name="tituloCuadro4">Column composable</string>
-    <string name="Descripcion4">A layout composable that places its children in a vertical sequence.</string>
+    <string name="tituloCuadro1">Componente de texto</string>
+    <string name="Descripcion1">Muestra texto y sigue las pautas recomendadas de Material Design.</string>
+    <string name="tituloCuadro2">Componente de imagen</string>
+    <string name="Descripcion2">Crea un composable que organiza y dibuja un objeto de la clase Painter proporcionado.</string>
+    <string name="tituloCuadro3">Componente Row</string>
+    <string name="Descripcion3">Un composable de layout que coloca sus hijos en una secuencia horizontal.</string>
+    <string name="tituloCuadro4">Componente Column</string>
+    <string name="Descripcion4">Un composable de layout que coloca sus hijos en una secuencia vertical.</string>
 </resources>
