@@ -18,12 +18,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun RecursosArticulo(){
+fun RecursosArticulo(modifier: Modifier = Modifier){
     ExerciseOne(
         titulo = stringResource(R.string.titulo),
         parrafo1 = stringResource(R.string.parrafo1),
         parrafo2 = stringResource(R.string.parrafo2),
-        imagen = painterResource(R.drawable.bg_compose_background)
+        imagen = painterResource(R.drawable.bg_compose_background),
+        modifier = modifier
     )
 }
 
@@ -64,7 +65,7 @@ fun ExerciseOne(
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun PreviewEjercicio1() {
     RecursosArticulo()

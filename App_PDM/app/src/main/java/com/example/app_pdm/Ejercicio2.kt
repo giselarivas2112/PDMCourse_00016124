@@ -20,11 +20,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun Recursos(){
+fun Recursos(modifier: Modifier = Modifier){
     ExerciseTwo(
         imagen = painterResource(R.drawable.ic_task_completed),
         texto1 = stringResource(R.string.textoTarea1),
-        texto2 = stringResource(R.string.textoTarea2)
+        texto2 = stringResource(R.string.textoTarea2),
+        modifier = modifier
     )
 }
 @Composable
@@ -57,7 +58,7 @@ fun ExerciseTwo(
 
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun PreviewEjercicio2(){
     Recursos()

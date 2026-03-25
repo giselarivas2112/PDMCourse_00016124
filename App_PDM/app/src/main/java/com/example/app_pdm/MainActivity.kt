@@ -21,13 +21,13 @@ class MainActivity : ComponentActivity() {
             App_PDMTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     //Ejercicio 1
-                    //RecursosArticulo()
+                    RecursosArticulo(modifier = Modifier.padding(innerPadding))
 
                     //Ejercicio 2
-                    //Recursos()
+                    //Recursos(modifier = Modifier.padding(innerPadding))
 
                     //Ejercicio 3
-                    RecursosTexto()
+                    //RecursosTexto(modifier = Modifier.padding(innerPadding))
                 }
             }
         }

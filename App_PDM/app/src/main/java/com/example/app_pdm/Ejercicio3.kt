@@ -22,7 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun RecursosTexto(){
+fun RecursosTexto(modifier: Modifier = Modifier){
     ExerciseThree(
         titulo1 = stringResource(R.string.tituloCuadro1),
         titulo2 = stringResource(R.string.tituloCuadro2),
@@ -32,7 +32,7 @@ fun RecursosTexto(){
         descripcion2 = stringResource(R.string.Descripcion2),
         descripcion3 = stringResource(R.string.Descripcion3),
         descripcion4 = stringResource(R.string.Descripcion4),
-
+        modifier = modifier
         )
 }
 
@@ -48,7 +48,7 @@ fun ExerciseThree(
     descripcion4: String,
     modifier: Modifier = Modifier
 ){
-    Column(modifier = Modifier.systemBarsPadding()) {
+    Column(modifier = modifier.fillMaxSize()) {
 
         Row(modifier = Modifier.weight(1f)) {
             Box(modifier = Modifier.weight(1f)){
