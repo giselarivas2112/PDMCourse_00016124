@@ -20,7 +20,11 @@ class MainActivity : ComponentActivity() {
         setContent {
             App_PDMTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    RecursosArticulo()
+                    //Ejercicio 1
+                    //RecursosArticulo()
+
+                    //Ejercicio 2
+                    //Recursos()
                 }
             }
         }
