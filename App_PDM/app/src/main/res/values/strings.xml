@@ -18,4 +18,10 @@
     <string name="Descripcion3">Un composable de layout que coloca sus hijos en una secuencia horizontal.</string>
     <string name="tituloCuadro4">Componente Column</string>
     <string name="Descripcion4">Un composable de layout que coloca sus hijos en una secuencia vertical.</string>
+
+    <string name="calculate_tip">Calcular propina</string>
+    <string name="bill_amount">Monto de la factura</string>
+    <string name="tip_amount">Cantidad de propina: %s</string>
+    <string name="tip_Percent">Porcentaje de propina</string>
+    <string name="boton">Calcular</string>
 </resources>

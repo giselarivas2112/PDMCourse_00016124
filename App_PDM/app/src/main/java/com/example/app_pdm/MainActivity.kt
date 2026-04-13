@@ -1,6 +1,8 @@
 package com.example.app_pdm
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -16,23 +18,61 @@ import com.example.app_pdm.ui.theme.App_PDMTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.d(TAG, "onCreate Called")
         enableEdgeToEdge()
         setContent {
             App_PDMTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     //Ejercicio 1
-                    RecursosArticulo(modifier = Modifier.padding(innerPadding))
+                    //RecursosArticulo(modifier = Modifier.padding(innerPadding))
 
                     //Ejercicio 2
                     //Recursos(modifier = Modifier.padding(innerPadding))
 
                     //Ejercicio 3
                     //RecursosTexto(modifier = Modifier.padding(innerPadding))
+
+                    //Ejercicio calculadora de propina
+                    TipCalculator(
+                        modifier = Modifier.padding(innerPadding),
+                    )
                 }
             }
         }
     }
+
+
+override fun onStart() {
+    super.onStart()
+    Log.d(TAG, "onStart Called")
 }
+
+override fun onResume() {
+    super.onResume()
+    Log.d(TAG, "onResume Called")
+}
+
+override fun onRestart() {
+    super.onRestart()
+    Log.d(TAG, "onRestart Called")
+}
+
+override fun onPause() {
+    super.onPause()
+    Log.d(TAG, "onPause Called")
+}
+
+override fun onStop() {
+    super.onStop()
+    Log.d(TAG, "onStop Called")
+}
+
+override fun onDestroy() {
+    super.onDestroy()
+    Log.d(TAG, "onDestroy Called")
+}
+}
+
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
