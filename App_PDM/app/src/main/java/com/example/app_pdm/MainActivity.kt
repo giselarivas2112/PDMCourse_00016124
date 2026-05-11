@@ -33,9 +33,12 @@ class MainActivity : ComponentActivity() {
                     //RecursosTexto(modifier = Modifier.padding(innerPadding))
 
                     //Ejercicio calculadora de propina
-                    TipCalculator(
+                    /*TipCalculator(
                         modifier = Modifier.padding(innerPadding),
-                    )
+                    )*/
+
+                    //App de películas
+                    MovieApp()
                 }
             }
         }
