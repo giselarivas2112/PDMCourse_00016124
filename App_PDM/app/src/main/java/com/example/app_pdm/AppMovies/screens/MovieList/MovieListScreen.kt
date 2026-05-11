@@ -1,4 +1,5 @@
-package com.agarcia.pdm_course_2026.clase220426.screens.MovieList
+package com.example.app_pdm.AppMovies.screens.MovieList
+
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,43 +15,44 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.agarcia.pdm_course_2026.clase130426.AppScaffold
-import com.agarcia.pdm_course_2026.clase220426.components.MovieItem
+import com.example.app_pdm.AppMovies.AppScaffold
+import com.example.app_pdm.AppMovies.components.MovieItem
+
 
 @Composable
 fun MovieListScreen(
-  navigateToDetail: (Int) -> Unit,
-  viewModel: MovieListViewModel = viewModel()
+    navigateToDetail: (Int) -> Unit,
+    viewModel: MovieListViewModel = viewModel()
 ) {
 
-  val movies by viewModel.movies.collectAsState()
-  val loading by viewModel.loading.collectAsState()
+    val movies by viewModel.movies.collectAsState()
+    val loading by viewModel.loading.collectAsState()
 
-  LaunchedEffect(Unit) {
-    viewModel.loadMovies()
-  }
+    LaunchedEffect(Unit) {
+        viewModel.loadMovies()
+    }
 
-  if (loading) {
+    if (loading) {
+        AppScaffold(title = "Movies") { padding ->
+            CircularProgressIndicator(modifier = Modifier.padding(padding))
+        }
+        return
+    }
+
     AppScaffold(title = "Movies") { padding ->
-      CircularProgressIndicator(modifier = Modifier.padding(padding))
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(padding)
+                .padding(16.dp),
+        ) {
+            items(movies) { movie ->
+                MovieItem(
+                    movie = movie,
+                    onClick = { navigateToDetail(movie.id) }
+                )
+                Spacer(modifier = Modifier.height(12.dp))
+            }
+        }
     }
-    return
-  }
-
-  AppScaffold(title = "Movies") { padding ->
-    LazyColumn(
-      modifier = Modifier
-        .fillMaxSize()
-        .padding(padding)
-        .padding(16.dp),
-    ) {
-      items(movies) { movie ->
-        MovieItem(
-          movie = movie,
-          onClick = { navigateToDetail(movie.id) }
-        )
-        Spacer(modifier = Modifier.height(12.dp))
-      }
-    }
-  }
 }

@@ -1,4 +1,5 @@
-package com.agarcia.pdm_course_2026.clase220426
+package com.example.app_pdm.AppMovies
+
 
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.slideInHorizontally
@@ -8,60 +9,59 @@ import androidx.compose.runtime.Composable
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
-import com.agarcia.pdm_course_2026.clase220426.screens.MovieDetailScreenV2
-import com.agarcia.pdm_course_2026.clase220426.screens.MovieList.MovieListScreen
+import com.example.app_pdm.AppMovies.screens.MovieList.MovieListScreen
+import com.example.app_pdm.AppMovies.screens.MovieDetail.MovieDetailScreen
 
 @Composable
 fun MovieApp() {
-  val backStack = rememberNavBackStack(Routes.Home)
+    val backStack = rememberNavBackStack(Routes.Home)
 
-  NavDisplay(
-    backStack = backStack,
-    onBack = { backStack.removeLastOrNull() },
-    entryProvider = entryProvider {
-      entry<Routes.Home> {
-        MovieListScreen(
-          navigateToDetail = { movieId ->
-            backStack.add(Routes.MovieDetail(movieId))
-          }
-        )
-      }
-      entry<Routes.MovieDetail> { key ->
-        MovieDetailScreenV2(
-          movieId = key.movieId,
-          navigateBack = {
-            backStack.removeLastOrNull()
-          }
-        )
-      }
-    },
-    transitionSpec = {
-      slideInHorizontally(
-        initialOffsetX = { it },
-        animationSpec = tween(500)
-      ) togetherWith slideOutHorizontally(
-        targetOffsetX = { -it },
-        animationSpec = tween(500)
-      )
-    },
-    popTransitionSpec = {
-      slideInHorizontally(
-        initialOffsetX = { -it },
-        animationSpec = tween(500)
-      ) togetherWith slideOutHorizontally(
-        targetOffsetX = { it },
-        animationSpec = tween(500)
-      )
-    },
-    predictivePopTransitionSpec = {
-      slideInHorizontally(
-        initialOffsetX = { -it },
-        animationSpec = tween(250)
-      ) togetherWith slideOutHorizontally(
-        targetOffsetX = { it },
-        animationSpec = tween(250)
-      )
-    }
-  )
+    NavDisplay(
+        backStack = backStack,
+        onBack = { backStack.removeLastOrNull() },
+        entryProvider = entryProvider {
+            entry<Routes.Home> {
+                MovieListScreen(
+                    navigateToDetail = { movieId ->
+                        backStack.add(Routes.MovieDetail(movieId))
+                    }
+                )
+            }
+            entry<Routes.MovieDetail> { key ->
+                MovieDetailScreen(
+                    movieId = key.movieId,
+                    navigateBack = {
+                        backStack.removeLastOrNull()
+                    }
+                )
+            }
+        },
+        transitionSpec = {
+            slideInHorizontally(
+                initialOffsetX = { it },
+                animationSpec = tween(500)
+            ) togetherWith slideOutHorizontally(
+                targetOffsetX = { -it },
+                animationSpec = tween(500)
+            )
+        },
+        popTransitionSpec = {
+            slideInHorizontally(
+                initialOffsetX = { -it },
+                animationSpec = tween(500)
+            ) togetherWith slideOutHorizontally(
+                targetOffsetX = { it },
+                animationSpec = tween(500)
+            )
+        },
+        predictivePopTransitionSpec = {
+            slideInHorizontally(
+                initialOffsetX = { -it },
+                animationSpec = tween(250)
+            ) togetherWith slideOutHorizontally(
+                targetOffsetX = { it },
+                animationSpec = tween(250)
+            )
+        }
+    ) }
 
-}

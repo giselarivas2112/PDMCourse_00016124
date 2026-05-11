@@ -1,18 +1,19 @@
-package com.agarcia.pdm_course_2026.clase220426.model
+package com.example.app_pdm.AppMovies.model
+
 
 data class Movie(
-  val id: Int,
-  val title: String,
-  val originalTitle: String,
-  val originalLanguage: String,
-  val overview: String,
-  val releaseDate: String,
-  val adult: Boolean,
-  val genreIds: List<Int>,
-  val popularity: Double,
-  val voteAverage: Double,
-  val voteCount: Int,
-  val video: Boolean,
-  val backdropUrl: String,
-  val posterUrl: String
+    val id: Int,
+    val title: String,
+    val originalTitle: String,
+    val originalLanguage: String,
+    val overview: String,
+    val releaseDate: String,
+    val adult: Boolean,
+    val genreIds: List<Int>,
+    val popularity: Double,
+    val voteAverage: Double,
+    val voteCount: Int,
+    val video: Boolean,
+    val backdropUrl: String,
+    val posterUrl: String
 )

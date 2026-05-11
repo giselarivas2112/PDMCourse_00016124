@@ -1,4 +1,5 @@
-package com.agarcia.pdm_course_2026.clase220426.screens
+package com.example.app_pdm.AppMovies.screens
+
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -48,9 +49,9 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
-import com.agarcia.pdm_course_2026.clase130426.AppScaffold
-import com.agarcia.pdm_course_2026.clase220426.dummy.dummyMovies
-import com.agarcia.pdm_course_2026.clase220426.model.Movie
+import com.example.app_pdm.AppMovies.AppScaffold
+import com.example.app_pdm.AppMovies.dummy.dummyMovies
+import com.example.app_pdm.AppMovies.model.Movie
 import kotlinx.coroutines.launch
 
 private val genreNames = mapOf(
