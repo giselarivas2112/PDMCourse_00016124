@@ -11,7 +11,7 @@ import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
 import com.example.app_pdm.AppMovies.screens.MovieList.MovieListScreen
 import com.example.app_pdm.AppMovies.screens.MovieDetail.MovieDetailScreen
-
+import com.example.app_pdm.AppMovies.screens.MovieDetailV2.MovieDetailScreenV2
 @Composable
 fun MovieApp() {
     val backStack = rememberNavBackStack(Routes.Home)
@@ -28,7 +28,7 @@ fun MovieApp() {
                 )
             }
             entry<Routes.MovieDetail> { key ->
-                MovieDetailScreen(
+                MovieDetailScreenV2(
                     movieId = key.movieId,
                     navigateBack = {
                         backStack.removeLastOrNull()
@@ -63,5 +63,5 @@ fun MovieApp() {
                 animationSpec = tween(250)
             )
         }
-    ) }
-
+    )
+}
