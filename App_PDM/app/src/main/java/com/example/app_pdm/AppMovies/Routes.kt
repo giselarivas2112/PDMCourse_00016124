@@ -11,4 +11,8 @@ sealed class Routes : NavKey {
 
     @Serializable
     data class MovieDetail(val movieId: Int) : Routes()
+
+    @Serializable
+    data object NowPlaying : Routes()
+
 }

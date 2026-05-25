@@ -23,7 +23,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             App_PDMTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                //Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     //Ejercicio 1
                     //RecursosArticulo(modifier = Modifier.padding(innerPadding))
 
@@ -38,9 +38,11 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier.padding(innerPadding),
                     )*/
 
-                    //App de películas
-                    MovieApp()
-                }
+
+
+                //}
+                //App de películas
+                MovieApp()
             }
         }
     }

@@ -11,47 +11,26 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import coil3.compose.AsyncImage
 import com.example.app_pdm.AppMovies.AppScaffold
 import com.example.app_pdm.AppMovies.dummy.dummyMovies
-import com.example.app_pdm.AppMovies.screens.MovieList.MovieListViewModel
+
 
 @Composable
 fun MovieDetailScreen(
     movieId: Int,
-    navigateBack: () -> Unit,
-    viewModel: MovieDetailViewModel = viewModel()
+    navigateBack: () -> Unit
 ) {
-
-    val movie by viewModel.movie.collectAsState()
-    val loading by viewModel.loading.collectAsState()
-
-    LaunchedEffect(Unit) {
-        viewModel.loadMovie(movieId)
-    }
-
-    if (loading) {
-        AppScaffold(title = "Detail") { padding ->
-            CircularProgressIndicator(
-                modifier = Modifier.padding(padding)
-            )
-        }
-        return
-    }
+    val movie = dummyMovies.find { it.id == movieId }
 
     AppScaffold(
         title = movie?.title ?: "Detail",

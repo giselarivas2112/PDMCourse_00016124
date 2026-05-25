@@ -1,8 +1,19 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.serialization)
 }
+
+val localProperties = Properties()
+val localPropertiesFile = rootProject.file("local.properties")
+if (localPropertiesFile.exists()) {
+    localProperties.load(FileInputStream(localPropertiesFile))
+}
+
+val tmdbToken: String = localProperties.getProperty("TMDB_TOKEN") ?: ""
 
 android {
     namespace = "com.example.app_pdm"
@@ -20,8 +31,9 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "TMDB_TOKEN", "\"$tmdbToken\"")
     }
-
+    buildFeatures { buildConfig = true }
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -41,6 +53,12 @@ android {
 }
 
 dependencies {
+
+    implementation(libs.ktor.client.core)
+    implementation(libs.ktor.client.okhttp)
+    implementation(libs.ktor.client.content.negotiation)
+    implementation(libs.ktor.serialization.kotlinx.json)
+    implementation(libs.ktor.client.logging)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)

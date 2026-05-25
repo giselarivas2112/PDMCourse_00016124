@@ -1,6 +1,7 @@
-package com.example.app_pdm.AppMovies.screens.MovieList
+package com.example.app_pdm.AppMovies.screens.MovieNowPlaying
 
-import android.icu.text.CaseMap
+
+
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -20,35 +21,35 @@ import com.example.app_pdm.AppMovies.AppScaffold
 import com.example.app_pdm.AppMovies.components.MovieItem
 
 @Composable
-fun MovieListScreen(
+fun NowPlayingScreen(
     navigateToDetail: (Int) -> Unit,
-    navigateToNP: () ->Unit,
-    viewModel: MovieListViewModel = viewModel()
+    navigateToBack: () ->Unit,
+    viewModel: NowPlayingViewModel = viewModel()
 ) {
-
     val movies by viewModel.movies.collectAsState()
     val loading by viewModel.loading.collectAsState()
 
     if (loading) {
-        AppScaffold(title = "Movies") { padding ->
+        AppScaffold(title = "En Cartelera") { padding ->
             CircularProgressIndicator(modifier = Modifier.padding(padding))
         }
         return
     }
 
-    AppScaffold(title = "Movies") { padding ->
-
+    AppScaffold(title = "En Cartelera") { padding ->
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padding)
-                .padding(16.dp),
+                .padding(16.dp)
         ) {
-            item { Button(
-                onClick = navigateToNP
-            ) {
-                Text("Ver peliculas en emision")
-            } }
+            item {
+                Button(
+                    onClick = navigateToBack
+                ) {
+                    Text("atras")
+                }
+            }
             items(movies) { movie ->
                 MovieItem(
                     movie = movie,

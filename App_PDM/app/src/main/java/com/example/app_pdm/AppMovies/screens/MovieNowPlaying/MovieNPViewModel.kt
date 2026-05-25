@@ -1,4 +1,6 @@
-package com.example.app_pdm.AppMovies.screens.MovieList
+package com.example.app_pdm.AppMovies.screens.MovieNowPlaying
+
+
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -9,12 +11,14 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class MovieListViewModel : ViewModel() {
+class NowPlayingViewModel : ViewModel() {
+
     private val movieRepository: MovieRepository = MovieApiRepository()
+
     private val _movies = MutableStateFlow<List<Movie>>(emptyList())
     val movies = _movies.asStateFlow()
 
-    private val _loading = MutableStateFlow<Boolean>(false)
+    private val _loading = MutableStateFlow(false)
     val loading = _loading.asStateFlow()
 
     init {
@@ -24,7 +28,7 @@ class MovieListViewModel : ViewModel() {
     fun loadMovies() {
         viewModelScope.launch {
             _loading.value = true
-            _movies.value = movieRepository.getMovies()
+            _movies.value = movieRepository.getNowPlayingMovies()
             _loading.value = false
         }
     }

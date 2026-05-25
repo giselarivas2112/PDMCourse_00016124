@@ -10,8 +10,9 @@ import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
 import com.example.app_pdm.AppMovies.screens.MovieList.MovieListScreen
-import com.example.app_pdm.AppMovies.screens.MovieDetail.MovieDetailScreen
-import com.example.app_pdm.AppMovies.screens.MovieDetailV2.MovieDetailScreenV2
+import com.example.app_pdm.AppMovies.screens.MovieDetail.MovieDetailScreenV2
+import com.example.app_pdm.AppMovies.screens.MovieNowPlaying.NowPlayingScreen
+
 @Composable
 fun MovieApp() {
     val backStack = rememberNavBackStack(Routes.Home)
@@ -24,7 +25,9 @@ fun MovieApp() {
                 MovieListScreen(
                     navigateToDetail = { movieId ->
                         backStack.add(Routes.MovieDetail(movieId))
-                    }
+                    },
+                    navigateToNP ={ backStack.add(Routes.NowPlaying)}
+
                 )
             }
             entry<Routes.MovieDetail> { key ->
@@ -35,6 +38,19 @@ fun MovieApp() {
                     }
                 )
             }
+            entry<Routes.NowPlaying> {
+                NowPlayingScreen(
+                    navigateToBack = {
+                        backStack.removeLastOrNull()
+                    },
+                    navigateToDetail = { movieId ->
+                        backStack.add(Routes.MovieDetail(movieId))
+                    }
+                )
+            }
+
+
+
         },
         transitionSpec = {
             slideInHorizontally(
