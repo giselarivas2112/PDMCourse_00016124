@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.app_pdm.AppEjercicioClase.PostApp
 import com.example.app_pdm.AppMovies.MovieApp
+import com.example.app_pdm.AppRankeUca.RankeUCA_App
 import com.example.app_pdm.ui.theme.App_PDMTheme
 
 class MainActivity : ComponentActivity() {
@@ -46,7 +47,10 @@ class MainActivity : ComponentActivity() {
                 //MovieApp()
 
                 //Ejercicio de clase
-                PostApp()
+                //PostApp()
+
+                //Ejercicio de rankeuca
+                RankeUCA_App()
             }
         }
     }

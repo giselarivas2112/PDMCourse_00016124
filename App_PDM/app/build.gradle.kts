@@ -1,3 +1,4 @@
+import android.databinding.internal.org.antlr.v4.runtime.Token
 import java.io.FileInputStream
 import java.util.Properties
 
@@ -5,6 +6,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.ksp)
 }
 
 val localProperties = Properties()
@@ -13,7 +15,7 @@ if (localPropertiesFile.exists()) {
     localProperties.load(FileInputStream(localPropertiesFile))
 }
 
-val tmdbToken: String = localProperties.getProperty("TMDB_TOKEN") ?: ""
+val Token: String = localProperties.getProperty("TOKEN") ?: ""
 
 android {
     namespace = "com.example.app_pdm"
@@ -31,7 +33,7 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField("String", "TMDB_TOKEN", "\"$tmdbToken\"")
+        buildConfigField("String", "TOKEN", "\"${Token}\"")
     }
     buildFeatures { buildConfig = true }
     buildTypes {
@@ -85,4 +87,16 @@ dependencies {
     implementation(libs.androidx.compose.material.icons.extended)
     //para añadir viewmodel
     implementation(libs.androidx.lifecycle.viewmodel.compose)
+
+    implementation(libs.ktor.client.core)
+    implementation(libs.ktor.client.okhttp)
+    implementation(libs.ktor.client.content.negotiation)
+    implementation(libs.ktor.serialization.kotlinx.json)
+    implementation(libs.ktor.client.logging)
+
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    ksp(libs.room.compiler)
+
+
 }
