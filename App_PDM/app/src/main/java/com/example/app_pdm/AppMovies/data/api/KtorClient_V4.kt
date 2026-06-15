@@ -1,8 +1,8 @@
-package com.example.app_pdm.AppRankeUca.data.api
+package com.example.app_pdm.AppMovies.data.api
 
 
 import android.util.Log
-import com.pdmcourse2026.basictemplate.BuildConfig
+
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.okhttp.OkHttp
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
@@ -14,11 +14,12 @@ import io.ktor.client.request.header
 import io.ktor.http.HttpHeaders
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
+import com.example.app_pdm.BuildConfig
 
-object KtorClient {
+object KtorClient_V4 {
+    private const val BASE_URL = "https://api.themoviedb.org/3/"
+    //private const val API_KEY = BuildConfig.TMDB_TOKEN
 
-    //private const val BASE_URL = "https://qjcxdvfzyseuvezacxsd.supabase.co/functions/v1/rankeuca"
-    private const val API_KEY = BuildConfig.TOKEN
 
     val client = HttpClient(OkHttp) {
         // Parseo automático de JSON
@@ -40,8 +41,8 @@ object KtorClient {
 
         // Configuración aplicada a todas las peticiones
         defaultRequest {
-            //url(BASE_URL)
-            header(HttpHeaders.Authorization, "Bearer ${API_KEY}")
+            url(BASE_URL)
+           // header(HttpHeaders.Authorization, "Bearer $API_KEY")
             header(HttpHeaders.Accept, "application/json")
         }
     }

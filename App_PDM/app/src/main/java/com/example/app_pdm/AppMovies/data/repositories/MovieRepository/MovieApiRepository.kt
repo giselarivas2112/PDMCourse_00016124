@@ -1,7 +1,7 @@
 package com.example.app_pdm.AppMovies.data.repositories.MovieRepository
 
 
-import com.example.app_pdm.AppMovies.data.api.KtorClient
+import com.example.app_pdm.AppMovies.data.api.KtorClient_V4
 import com.example.app_pdm.AppMovies.data.api.Movies.GetMoviesResponseDto
 import com.example.app_pdm.AppMovies.data.api.Movies.MovieDto
 import com.example.app_pdm.AppMovies.data.api.Movies.toModel
@@ -12,7 +12,7 @@ import io.ktor.client.request.parameter
 
 class MovieApiRepository : MovieRepository {
     override suspend fun getMovies(): List<Movie> {
-        val response: GetMoviesResponseDto = KtorClient.client.get("movie/popular") {
+        val response: GetMoviesResponseDto = KtorClient_V4.client.get("movie/popular") {
             parameter("language", "es-ES")
             parameter("page", 1)
         }.body()
@@ -21,7 +21,7 @@ class MovieApiRepository : MovieRepository {
     }
 
     override suspend fun getMovieById(id: Int): Movie? {
-        val response: MovieDto = KtorClient.client.get("movie/$id") {
+        val response: MovieDto = KtorClient_V4.client.get("movie/$id") {
             parameter("language", "es-ES")
         }.body()
 
@@ -29,7 +29,7 @@ class MovieApiRepository : MovieRepository {
     }
 
     override suspend fun getNowPlayingMovies(): List<Movie> {
-        val response: GetMoviesResponseDto = KtorClient.client.get("movie/now_playing") {
+        val response: GetMoviesResponseDto = KtorClient_V4.client.get("movie/now_playing") {
             parameter("language", "es-ES")
             parameter("page", 1)
         }.body()
