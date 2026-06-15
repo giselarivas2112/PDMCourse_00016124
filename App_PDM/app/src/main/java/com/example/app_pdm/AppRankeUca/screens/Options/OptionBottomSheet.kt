@@ -41,6 +41,7 @@ fun OptionBottomSheet(
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
+
             OutlinedTextField(
                 value = name,
                 onValueChange = { name = it },
@@ -48,6 +49,7 @@ fun OptionBottomSheet(
                 modifier = Modifier.fillMaxWidth(),
                 singleLine = true
             )
+
             OutlinedTextField(
                 value = imageUrl,
                 onValueChange = { imageUrl = it },
@@ -55,6 +57,7 @@ fun OptionBottomSheet(
                 modifier = Modifier.fillMaxWidth(),
                 singleLine = true
             )
+
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.End

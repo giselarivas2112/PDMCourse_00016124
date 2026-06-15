@@ -1,7 +1,7 @@
 package com.example.app_pdm.AppRankeUca.data.Repository
 
 
-import com.example.app_pdm.AppRankeUca.model.Option
+import com.example.app_pdm.AppRankeUca.data.model.Option
 import kotlinx.coroutines.flow.Flow
 
 interface OptionRepository {

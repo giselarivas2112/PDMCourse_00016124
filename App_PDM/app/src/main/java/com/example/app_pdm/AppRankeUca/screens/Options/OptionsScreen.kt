@@ -5,7 +5,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.DeleteOutline
+import androidx.compose.material.icons.filled.Inbox
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -19,14 +20,13 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 @Composable
 fun OptionsScreen(
     navigateToHome: () -> Unit,
-    viewModel: OptionsViewModel = viewModel(factory = OptionsViewModel.Factory,
-
-        )
+    viewModel: OptionsViewModel = viewModel(factory = OptionsViewModel.Factory)
 ) {
     val options by viewModel.options.collectAsStateWithLifecycle()
     var showSheet by rememberSaveable { mutableStateOf(false) }
 
     Scaffold(
+        containerColor = MaterialTheme.colorScheme.surfaceContainerLowest,
         topBar = {
             TopAppBar(
                 title = { Text("Administrar opciones") },
@@ -36,7 +36,10 @@ fun OptionsScreen(
                         Spacer(modifier = Modifier.width(4.dp))
                         Text("Nuevo")
                     }
-                }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.surface
+                )
             )
         }
     ) { innerPadding ->
@@ -46,14 +49,22 @@ fun OptionsScreen(
                 .padding(innerPadding)
                 .padding(horizontal = 16.dp, vertical = 12.dp)
         ) {
+
             if (options.isEmpty()) {
                 Column(
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = Modifier.weight(1f),
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
+                    Icon(
+                        imageVector = Icons.Default.Inbox,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.outline,
+                        modifier = Modifier.height(36.dp)
+                    )
+                    Spacer(modifier = Modifier.height(12.dp))
                     Text(
-                        text = "Todavía no hay opciones",
+                        text = "Todavia no hay opciones",
                         style = MaterialTheme.typography.titleMedium
                     )
                     Text(
@@ -64,7 +75,7 @@ fun OptionsScreen(
                 }
             } else {
                 LazyColumn(
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = Modifier.weight(1f),
                     contentPadding = PaddingValues(vertical = 4.dp),
                     verticalArrangement = Arrangement.spacedBy(10.dp)
                 ) {
@@ -87,7 +98,7 @@ fun OptionsScreen(
                                 trailingContent = {
                                     IconButton(onClick = { viewModel.deleteOption(option) }) {
                                         Icon(
-                                            imageVector = Icons.Default.Delete,
+                                            imageVector = Icons.Default.DeleteOutline,
                                             contentDescription = "Borrar ${option.name}",
                                             tint = MaterialTheme.colorScheme.error
                                         )
@@ -96,24 +107,25 @@ fun OptionsScreen(
                             )
                         }
                     }
-                    item {
-                        Button(
-                            onClick = navigateToHome,
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(16.dp)
-                        ) {
-                            Text("Ir a home")
-                        }
-                    }
                 }
+            }
+
+            Button(
+                onClick = navigateToHome,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 16.dp)
+            ) {
+                Text("Regresar")
             }
         }
     }
 
     if (showSheet) {
         OptionBottomSheet(
-            onSave = { name, imageUrl -> viewModel.addOption(name, imageUrl) },
+            onSave = { name, imageUrl ->
+                viewModel.addOption(name, imageUrl)
+            },
             onDismiss = { showSheet = false }
         )
     }

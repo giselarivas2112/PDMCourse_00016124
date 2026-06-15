@@ -30,7 +30,7 @@ fun HomeScreen(
         }
     ) { innerPadding ->
         Column(modifier = Modifier.padding(innerPadding)) {
-            
+
 
             Button(onClick = navigateToOptions) {
                 Text("Administrar opciones")

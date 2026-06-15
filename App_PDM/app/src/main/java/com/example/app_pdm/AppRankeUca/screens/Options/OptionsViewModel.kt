@@ -1,16 +1,14 @@
 package com.example.app_pdm.AppRankeUca.screens.Options
 
-// screens/Options/OptionsViewModel.kt
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.app_pdm.AppRankeUca.data.Repository.OptionRepository
-import com.example.app_pdm.AppRankeUca.model.Option
-import com.example.app_pdm.BasicTemplateApplication
+import com.example.app_pdm.AppRankeUca.data.model.Option
+import com.example.app_pdm.AppPdmApplication
 
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -31,14 +29,7 @@ class OptionsViewModel(
 
     fun addOption(name: String, imageUrl: String) {
         viewModelScope.launch {
-            optionRepository.addOption(
-                Option(
-                    id = 0,
-                    name = name,
-                    imageUrl = imageUrl,
-                    votes = 0
-                )
-            )
+            optionRepository.addOption(Option(name = name, imageUrl = imageUrl))
         }
     }
 
@@ -49,11 +40,12 @@ class OptionsViewModel(
     }
 
     companion object {
-        val Factory: ViewModelProvider.Factory = viewModelFactory {
+        val Factory = viewModelFactory {
             initializer {
-                val app = this[APPLICATION_KEY] as BasicTemplateApplication
+                val app = this[APPLICATION_KEY] as AppPdmApplication
                 OptionsViewModel(app.appProvider.provideOptionRepository())
             }
         }
     }
 }
+
