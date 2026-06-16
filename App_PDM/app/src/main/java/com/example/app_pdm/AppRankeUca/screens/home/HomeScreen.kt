@@ -15,7 +15,7 @@ import androidx.compose.ui.Modifier
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
-    navigateToOptions: () -> Unit
+    navigateToQuestions: () -> Unit
 
 ) {
     Scaffold(
@@ -32,8 +32,11 @@ fun HomeScreen(
         Column(modifier = Modifier.padding(innerPadding)) {
 
 
-            Button(onClick = navigateToOptions) {
-                Text("Administrar opciones")
+
+            Button(
+                onClick = navigateToQuestions
+            ) {
+                Text("Administrar preguntas")
             }
 
         }

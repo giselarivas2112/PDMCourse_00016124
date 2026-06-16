@@ -5,6 +5,7 @@ import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
 import com.example.app_pdm.AppRankeUca.screens.Options.OptionsScreen
+import com.example.app_pdm.AppRankeUca.screens.Question.QuestionsScreen
 import com.example.app_pdm.AppRankeUca.screens.home.HomeScreen
 
 
@@ -18,13 +19,22 @@ fun RankeUCA_App() {
         entryProvider = entryProvider {
             entry<Routes.Home> {
                 HomeScreen(
-                    navigateToOptions = { backStack.add(Routes.Options) }
+                    navigateToQuestions = { backStack.add(Routes.Questions) }
                 )
             }
 
-            entry<Routes.Options> {
+            entry<Routes.Options> { entry ->
                 OptionsScreen(
-                    navigateToHome = { backStack.add(Routes.Home) }
+                    questionId = entry.questionId,
+                    navigateToBack = { backStack.removeLastOrNull() }
+                )
+            }
+
+
+            entry<Routes.Questions> {
+                QuestionsScreen(
+                    onQuestionClick = { questionId -> backStack.add(Routes.Options(questionId)) },
+                    navigateToHome = { backStack.removeLastOrNull() }
                 )
             }
 
